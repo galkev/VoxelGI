@@ -1,0 +1,74 @@
+
+% Trilinear Filtering Differentials
+\begin{equation}
+\pardiffx{P_{grid}} = \frac{V_{resolution}}{2V_{scale}} \pardiffx{P_{global}}
+\end{equation}
+
+\begin{equation}
+\pardiffx{t} = \pardiffx{P_{grid}}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+\pardiffx{T} &=
+\begin{pmatrix}
+\left(-\pardiffx{t_x}\right) (1 - t_y) (1 - t_z) \newlinel
+\pardiffx{t_x} (1 - t_y) (1 - t_z) \newlinel
+\left(-\pardiffx{t_x}\right) t_y (1 - t_z) \newlinel
+\left(-\pardiffx{t_x}\right) (1 - t_y) t_z \newlinel
+\pardiffx{t_x} t_y (1 - t_z) \newlinel
+\pardiffx{t_x} (1 - t_y) t_z \newlinel
+\left(-\pardiffx{t_x}\right) t_y t_z \newlinel
+\pardiffx{t_x} t_y t_z
+\end{pmatrix}
++
+\begin{pmatrix}
+(1 - t_x) \left(-\pardiffx{t_y}\right) (1 - t_z) \newlinel
+t_x \left(-\pardiffx{t_y}\right) (1 - t_z) \newlinel
+(1 - t_x) \pardiffx{t_y} (1 - t_z) \newlinel
+(1 - t_x) \left(-\pardiffx{t_y}\right) t_z \newlinel
+t_x \pardiffx{t_y} (1 - t_z) \newlinel
+t_x \left(-\pardiffx{t_y}\right) t_z \newlinel
+(1 - t_x) \pardiffx{t_y} t_z \newlinel
+t_x \pardiffx{t_y} t_z
+\end{pmatrix}
+\\
+&+
+\begin{pmatrix}
+(1 - t_x) (1 - t_y) \left(-\pardiffx{t_z}\right) \newlinel
+t_x (1 - t_y) \left(-\pardiffx{t_z}\right) \newlinel
+(1 - t_x) t_y \left(-\pardiffx{t_z}\right) \newlinel
+(1 - t_x) (1 - t_y) \pardiffx{t_z} \newlinel
+t_x t_y \left(-\pardiffx{t_z}\right) \newlinel
+t_x (1 - t_y) \pardiffx{t_z} \newlinel
+(1 - t_x) t_y \pardiffx{t_z} \newlinel
+t_x t_y \pardiffx{t_z}
+\end{pmatrix}
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\pardiffx{trilinear(t)} = \pardiffx{T} \cdot V
+\end{equation}
+
+% Differentials of flat voxel normals
+\begin{equation}
+N = \frac{n}{(n \cdot n)^{1/2}}
+\end{equation}
+
+\begin{equation}
+\pardiffx{n} =
+\begin{pmatrix}
+\pardiffsq{trilinear(t_P)}{x_{w}}{x_{i}} \newlinell
+\pardiffsq{trilinear(t_P)}{y_{w}}{x_{i}} \newlinell
+\pardiffsq{trilinear(t_P)}{z_{w}}{x_{i}}
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+\pardiffx{P_{grid}} = \frac{V_{resolution}}{2V_{scale}} \pardiffx{P_{w}}
+\end{equation}
+
+\begin{equation}
+\pardiffx{t} = \pardiffx{P_{grid}}
+\end{equation}
